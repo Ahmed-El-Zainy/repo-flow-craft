@@ -1,15 +1,15 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Github, Workflow, Zap, FileCode, GitBranch, Settings, Code2, Bot, Sparkles } from "lucide-react";
+import { Github, Workflow, Zap, FileCode, GitBranch, Settings, Code2, Bot, Sparkles, FileTree } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import RepoAnalyzer from "@/components/RepoAnalyzer";
 import WorkflowGenerator from "@/components/WorkflowGenerator";
 import DiagramView from "@/components/DiagramView";
+import CodeTreeAnalyzer from "@/components/CodeTreeAnalyzer";
 
 const Index = () => {
   const [repoUrl, setRepoUrl] = useState('');
@@ -219,7 +219,7 @@ const Index = () => {
         {repoData && (
           <div className="max-w-7xl mx-auto">
             <Tabs defaultValue="overview" className="w-full">
-              <TabsList className="grid w-full grid-cols-4 mb-8 h-14 bg-gray-900/80 backdrop-blur-xl border-2 border-gray-700/50">
+              <TabsList className="grid w-full grid-cols-5 mb-8 h-14 bg-gray-900/80 backdrop-blur-xl border-2 border-gray-700/50">
                 <TabsTrigger value="overview" className="flex items-center space-x-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-600 data-[state=active]:to-blue-700 data-[state=active]:text-white text-gray-300 hover:text-white transition-all duration-300">
                   <FileCode className="h-4 w-4" />
                   <span>Overview</span>
@@ -231,6 +231,10 @@ const Index = () => {
                 <TabsTrigger value="diagram" className="flex items-center space-x-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-purple-600 data-[state=active]:to-purple-700 data-[state=active]:text-white text-gray-300 hover:text-white transition-all duration-300">
                   <GitBranch className="h-4 w-4" />
                   <span>Diagrams</span>
+                </TabsTrigger>
+                <TabsTrigger value="tree" className="flex items-center space-x-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-orange-600 data-[state=active]:to-orange-700 data-[state=active]:text-white text-gray-300 hover:text-white transition-all duration-300">
+                  <FileTree className="h-4 w-4" />
+                  <span>Code Tree</span>
                 </TabsTrigger>
                 <TabsTrigger value="settings" className="flex items-center space-x-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-gray-600 data-[state=active]:to-gray-700 data-[state=active]:text-white text-gray-300 hover:text-white transition-all duration-300">
                   <Settings className="h-4 w-4" />
@@ -248,6 +252,10 @@ const Index = () => {
 
               <TabsContent value="diagram">
                 <DiagramView repoData={repoData} />
+              </TabsContent>
+
+              <TabsContent value="tree">
+                <CodeTreeAnalyzer repoData={repoData} />
               </TabsContent>
 
               <TabsContent value="settings">
