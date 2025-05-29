@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Github, Workflow, Zap, FileCode, GitBranch, Settings, Code2, Bot, Sparkles, FileTree } from "lucide-react";
+import { Github, Workflow, Zap, FileCode, GitBranch, Settings, Code2, Bot, Sparkles, File as FileTree } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import RepoAnalyzer from "@/components/RepoAnalyzer";
 import WorkflowGenerator from "@/components/WorkflowGenerator";
